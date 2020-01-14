@@ -1,21 +1,11 @@
 import React, { useContext } from "react";
-import { MovieDbContext } from "./moviedb";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import axios from "axios";
-import useSWR from "swr";
 
 const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
 
 const MovieInfo = (props) => {
-    const movieDbCtx = useContext(MovieDbContext);
-    const fetcher = query => (axios.get(query, {
-        headers: {
-            authorization: `Bearer ${movieDbCtx.apiBearer}`
-        }
-    }).then(({data}) => (data)));
-    const { data: movieData } = useSWR(`${movieDbCtx.apiBaseUrl}/movie/${props.id}`, fetcher, { suspense: true });
-    
+    const movieData = props.resource.read();
     return (
         <>
             <h2>Details</h2>
