@@ -1,0 +1,9 @@
+{
+    "short_name": "Suspense Talk",
+    "name": "React suspense demo for my talk",
+    "icons": [],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+  }

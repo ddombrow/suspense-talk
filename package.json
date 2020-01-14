@@ -1,0 +1,30 @@
+{
+  "name": "suspense-talk",
+  "version": "1.0.0",
+  "description": "a talk about react-suspense",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "react": "experimental",
+    "react-circular-progressbar": "^2.0.3",
+    "react-dom": "experimental",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0",
+    "react-svg-spinner": "1.0.4",
+    "shortid": "^2.2.15",
+    "swr": "^0.1.16"
+  },
+  "devDependencies": {
+    "typescript": "3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
