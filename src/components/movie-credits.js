@@ -1,17 +1,7 @@
-import React, { useContext } from "react";
-import { MovieDbContext } from "./moviedb";
-import axios from "axios";
-import useSWR from "swr";
+import React from "react";
 
 const MovieCredits = (props) => {
-    const movieDbCtx = useContext(MovieDbContext);
-    const fetcher = query => (axios.get(query, {
-        headers: {
-            authorization: `Bearer ${movieDbCtx.apiBearer}`
-        }
-    }).then(({data}) => (data)));
-    const { data: credits } = useSWR(`${movieDbCtx.apiBaseUrl}/movie/${props.id}/credits`, fetcher, { suspense: true });
-
+    const credits = props.resource.read();
     return (
         <>
             <h2>Credits</h2>
@@ -27,7 +17,7 @@ const MovieCredits = (props) => {
             <h3>Cast</h3>
             {
                 credits.cast.slice(0, 17).map(cm => {
-                return <p className="cast-member" key={cm.cast_id}><strong>{cm.character}</strong> - {cm.name}</p>
+                    return <p className="cast-member" key={cm.cast_id}><strong>{cm.character}</strong> - {cm.name}</p>
                 })
             }
             ...

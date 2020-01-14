@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axmoviecamera from "../axmoviecamera.gif";
 
 export const movieList = [
     {
@@ -115,7 +116,11 @@ export const getPreviousLink = (rank) => {
 const MovieList = (props) => {
     return (
         <div className="movie-list-screen">
-            <h1>My Top 10 Suspenseful Films</h1>
+            <h1>
+                <img style={{position: "absolute", top: "25px", left: "10px"}} src={axmoviecamera} />
+                <marquee><font style={{color: "red"}}>My Top 10 Suspenseful Films</font></marquee> 
+                <img style={{position: "absolute", top: "25px", right: "10px"}} src={axmoviecamera} />
+            </h1>
             <hr/>
             <ol>
                 { 
