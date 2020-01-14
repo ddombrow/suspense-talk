@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Spinner from "react-svg-spinner";
-import { movieDbBaseUrl, movieDbBearerToken } from "../keys.js";
 import { MovieDbContext } from "./moviedb";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -14,9 +13,9 @@ const MovieInfo = (props) => {
     const movieDbCtx = useContext(MovieDbContext);
 
     useEffect(() => {
-        axios.get(`${movieDbBaseUrl}/movie/${movieId}`, {
+        axios.get(`${movieDbCtx.apiBaseUrl}/movie/${movieId}`, {
             headers: {
-                authorization: `Bearer ${movieDbBearerToken}`
+                authorization: `Bearer ${movieDbCtx.apiBearer}`
             }
         }).then(({data: movie }) => {
             setMovieData(movie);
