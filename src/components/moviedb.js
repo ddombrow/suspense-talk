@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { movieDbBearerToken } from "../keys.js";
+import { movieDbBearerToken } from "../keys-real.js";
 
 export const MovieDbContext = React.createContext(null);
 
