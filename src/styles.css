@@ -43,7 +43,7 @@ h1 {
 
 li {
   color: #f1f1f1;
-  list-style: upper-roman inside;
+  list-style: decimal inside;
   font-size: larger;
   font-weight: bold;
   padding: 15px;
