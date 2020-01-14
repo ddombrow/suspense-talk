@@ -1,27 +1,16 @@
-import React, { useEffect, useContext, useState } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
 import { MovieDbContext } from "./moviedb";
-import Spinner from "react-svg-spinner";
+import axios from "axios";
+import useSWR from "swr";
 
 const MovieCredits = (props) => {
     const movieDbCtx = useContext(MovieDbContext);
-    const [credits, setCredits] = useState(null);
-    useEffect(() => {
-        axios.get(`${movieDbCtx.apiBaseUrl}/movie/${props.id}/credits`, {
-            headers: {
-                authorization: `Bearer ${movieDbCtx.apiBearer}`
-            }
-        })
-        .then(({data: credits}) => {
-            setCredits(credits);
-        })
-    }, [props.id]);
-
-    if (!credits || !movieDbCtx.config) {
-        return <>
-            <Spinner size="200" />
-        </>;
-    }
+    const fetcher = query => (axios.get(query, {
+        headers: {
+            authorization: `Bearer ${movieDbCtx.apiBearer}`
+        }
+    }).then(({data}) => (data)));
+    const { data: credits } = useSWR(`${movieDbCtx.apiBaseUrl}/movie/${props.id}/credits`, fetcher, { suspense: true });
 
     return (
         <>
